@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Search</title>
+</head>
+<body>
+    <h1>Weather Forecast</h1>
+    <form action="/weather" method="POST">
+        <input type="text" name="city" placeholder="Enter city name" required>
+        <button type="submit">Get Weather</button>
+    </form>
+
+    <% if (weather) { %>
+        <div class="result-card">
+            <h2>Weather in <%= weather.city %></h2>
+            <img src="https://openweathermap.org/img/wn/<%=weather.icon%>@2x.png" alt="<%= weather.description %> icon">
+            <p>Temperature: <%= weather.temperature %> °C</p>
+            <p>Description: <%= weather.description %></p>
+        </div>
+    <% } %>
+    
+    <!-- Saved searches -->
+    <div class="search-list">
+        <% weatherData.forEach(weather => { %>
+            <div class="weather-card">
+                <h3><%= weather.city %></h3>
+                <img src="https://openweathermap.org/img/wn/<%=weather.icon%>@2x.png" alt="<%= weather.description %> icon">
+                <p>Temperature: <%= weather.temperature %> °C</p>
+                <p>Description: <%= weather.description %></p>
+                <p>Date: <%= weather.date.toDateString() %></p>
+                <form action="/weather/delete/<%= weather._id %>" method="GET">
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+        <% }) %>
+    </div>
+    
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #fceff9, #e0c3fc);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #d4a5ff;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px #fff;
+        }
+
+        form {
+            margin-bottom: 30px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border: 2px solid #d4a5ff;
+            border-radius: 25px;
+            outline: none;
+            width: 200px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #c085ff;
+            box-shadow: 0 0 10px rgba(192, 133, 255, 0.4);
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #c085ff;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #a46adf;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #ffdde1, #e1ccec);
+            border: 2px solid #ff9cee;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .result-card h2 {
+            margin: 0 0 10px;
+            color: #b06ef8;
+        }
+
+        .result-card img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+        }
+
+        .search-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .weather-card {
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid #d4a5ff;
+            border-radius: 15px;
+            padding: 16px;
+            width: 220px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+            text-align: center;
+        }
+
+        .weather-card:hover {
+            transform: scale(1.05);
+            border-color: #c085ff;
+        }
+
+        .weather-card h3 {
+            color: #b06ef8;
+            margin: 0 0 10px;
+        }
+
+        .weather-card img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        .weather-card p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .weather-card button {
+            background-color: #ff9cee;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .weather-card button:hover {
+            background-color: #ff7ad9;
+        }
+    </style>
+</body>
+</html>

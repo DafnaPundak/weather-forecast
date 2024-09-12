@@ -1,0 +1,15 @@
+git add .
+Project Overview
+
+The application will:
+Fetch weather data from an external API.
+Use an MVC structure to separate concerns (Model, View, Controller).
+Implement CRUD operations using a database.
+Use OOP principles in the backend.
+
+Tech Stack:
+Backend: Node.js, Express.
+Frontend: HTML, CSS, JavaScript.
+Database: MongoDB.
+External API: OpenWeatherMap API.
+NPM Packages: Axios (for API requests), Mongoose (for database interactions), dotenv (for environment variables), EJS or Handlebars (for templating).
