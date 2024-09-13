@@ -16,7 +16,7 @@ mongoose.connect(process.env.DB_URI)
 // Middleware
 app.set('view engine', 'ejs'); // or 'hbs' if using Handlebars
 app.set('views', path.join(__dirname, './views'));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'src')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // To handle form submissions
 

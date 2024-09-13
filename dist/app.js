@@ -13,7 +13,7 @@ mongoose.connect(process.env.DB_URI).then(() => console.log('Connected to MongoD
 // Middleware
 app.set('view engine', 'ejs'); // or 'hbs' if using Handlebars
 app.set('views', path.join(__dirname, './views'));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'src')));
 app.use(express.json());
 app.use(express.urlencoded({
   extended: true
