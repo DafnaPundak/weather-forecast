@@ -1,4 +1,4 @@
-const Weather = require('../src/models/Weather');
+const Weather = require('../models/Weather');
 const axios = require('axios');
 
 // Fetch weather data from API and save it to the database
