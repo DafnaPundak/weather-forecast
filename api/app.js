@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const path = require('path');
-const weatherRoutes = require('./src/routes/weatherRoutes'); // Your routes
+const weatherRoutes = require('../src/routes/weatherRoutes'); // Your routes
 
 dotenv.config();
 
@@ -15,7 +15,7 @@ mongoose.connect(process.env.DB_URI)
 
 // Middleware
 app.set('view engine', 'ejs'); // or 'hbs' if using Handlebars
-app.set('views', path.join(__dirname, './src/views'));
+app.set('views', path.join(__dirname, '../src/views'));
 app.use(express.static(path.join(__dirname, 'src')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // To handle form submissions
